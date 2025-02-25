@@ -1,13 +1,34 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import useAxiosPublic from '../hooks/useAxiosPublic';
+import toast, { Toaster } from "react-hot-toast";
+import { AuthContext } from '../provider/Auth';
 
 const LoginPage = () => {
-
+    const { setUser } = useContext(AuthContext);
     const { register, handleSubmit } = useForm();
+    const axiosPublic = useAxiosPublic();
+    const navigate = useNavigate();
 
-    const onSubmit = (data) => {
-        console.log(data);
+    const onSubmit = async (data) => {
+        const email = data.email;
+        const pin = data.pin;
+
+        const credentials = { email, pin };
+
+        await axiosPublic.post('/login', credentials, {withCredentials: true})
+            .then(res => {
+                console.log(res.data);
+                if (res.data?.message === 'Success') {
+                    toast.success('Registration successfull!');
+                    navigate('/dashboard')
+                    setUser(email)
+                }
+            })
+            .catch(() => {
+                toast.error('Invalid Credential. Login Failed!');
+            })
     }
 
     return (
@@ -47,14 +68,14 @@ const LoginPage = () => {
                                 {/* Email Input */}
                                 <div>
                                     <label htmlFor="email" className="block mb-2 text-sm text-gray-600 dark:text-gray-200">
-                                        Email Address
+                                        Email
                                     </label>
                                     <input
                                         {...register('email')}
                                         type="email"
                                         name="email"
                                         id="email"
-                                        placeholder="example@example.com"
+                                        placeholder="Please Enter Your Email or Mobile Number"
                                         className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                                     />
                                 </div>
@@ -63,18 +84,15 @@ const LoginPage = () => {
                                 <div className="mt-6">
                                     <div className="flex justify-between mb-2">
                                         <label htmlFor="password" className="text-sm text-gray-600 dark:text-gray-200">
-                                            Password
+                                            Pin
                                         </label>
-                                        <a href="#" className="text-sm text-gray-400 focus:text-blue-500 hover:text-blue-500 hover:underline">
-                                            Forgot password?
-                                        </a>
                                     </div>
                                     <input
-                                        {...register('password')}
-                                        type="password"
-                                        name="password"
-                                        id="password"
-                                        placeholder="Your Password"
+                                        {...register('pin')}
+                                        type="number"
+                                        name="pin"
+                                        id="pin"
+                                        placeholder="Please Enter Your Pin"
                                         className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                                     />
                                 </div>
@@ -98,6 +116,10 @@ const LoginPage = () => {
                     </div>
                 </div>
             </div>
+            <Toaster
+                position="top-right"
+                reverseOrder={false}
+            />
         </div>
     );
 };
