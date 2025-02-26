@@ -12,21 +12,6 @@ const DashboardHome = () => {
     const { register, handleSubmit } = useForm();
     const axiosSecure = useAxiosSecure();
     // const axiosPublic = useAxiosPublic();
-
-    // handle Send money
-    const handleSendMoney = async (data) => {
-        try {
-            const response = await axiosSecure.post("/transaction/send", data);
-            if (response.data?.message === "Transaction successful") {
-                toast.success("Money sent successfully!");
-                reset();
-            }
-        } catch (err) {
-            toast.error(err.response?.data?.message || "Send Money Failed");
-        }
-        document.getElementById('my_modal_1').close(); // Close modal manually
-    }
-
     return (
         <div className=''>
             {/* top section */}
@@ -51,45 +36,6 @@ const DashboardHome = () => {
                         </div>
                     </div>
                 </div>
-            </div>
-            <div>
-                {/* Send Money Modal */}
-                <button className="btn" onClick={() => document.getElementById('my_modal_1').showModal()}>Send Money</button>
-                <dialog id="my_modal_1" className="modal">
-                    <div className="modal-box">
-                        <div className="modal-action w-full">
-                            <form onSubmit={handleSubmit(handleSendMoney)} method="dialog" className='w-full'>
-                                {/* if there is a button in form, it will close the modal */}
-                                {/* <button className="btn w-full">Send</button> */}
-                                <fieldset className="fieldset ">
-                                    <legend className="fieldset-legend">Please Enter Receiver Phone Number</legend>
-                                    <input {...register('mobileNumber')} type="text" className="input w-full" placeholder="Type here" />
-                                </fieldset>
-                                {/* <button className='w-full btn'>Send Money</button> */}
-                                <input type="submit" value="Send Money" className='btn w-full' />
-                            </form>
-                        </div>
-                    </div>
-                </dialog>
-
-                 {/* Cash Out Modal */}
-                 <button className="btn" onClick={() => document.getElementById('my_modal_2').showModal()}>Send Money</button>
-                <dialog id="my_modal_2" className="modal">
-                    <div className="modal-box">
-                        <div className="modal-action w-full">
-                            <form onSubmit={handleSubmit(handleSendMoney)} method="dialog" className='w-full'>
-                                {/* if there is a button in form, it will close the modal */}
-                                {/* <button className="btn w-full">Send</button> */}
-                                <fieldset className="fieldset ">
-                                    <legend className="fieldset-legend">Please Enter Receiver Phone Number</legend>
-                                    <input {...register('mobileNumber')} type="text" className="input w-full" placeholder="Type here" />
-                                </fieldset>
-                                {/* <button className='w-full btn'>Send Money</button> */}
-                                <input type="submit" value="Send Money" className='btn w-full' />
-                            </form>
-                        </div>
-                    </div>
-                </dialog>
             </div>
         </div>
     );

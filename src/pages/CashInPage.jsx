@@ -8,7 +8,7 @@ const CashInPage = () => {
     const axiosSecure = useAxiosSecure();
 
     const onSubmit = async (data) => {
-        console.log(data);
+        // console.log(data);
         try {
             const response = await axiosSecure.post("/transaction/cash-in", data);
             if (response.data?.message === "Cash-in successful") {

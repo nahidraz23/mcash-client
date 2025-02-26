@@ -9,15 +9,19 @@ const SendMoneyPage = () => {
 
     const onSubmit = async (data) => {
         try {
-            const response = await axiosSecure.post("/transaction/send", data);
-            if (response.data?.message === "Transaction successful") {
+            const response = await axiosSecure.post("/transaction/send-money", data);
+            // console.log(response);
+            if (response.data?.message === "Successful") {
                 toast.success("Money sent successfully!");
                 reset();
+            } else {
+                toast.error(response.data?.message || "Send Money Failed");
             }
         } catch (err) {
+            console.error(err);
             toast.error(err.response?.data?.message || "Send Money Failed");
         }
-    };
+    }
 
     return (
         <div className="p-4">
@@ -48,5 +52,7 @@ const SendMoneyPage = () => {
         </div>
     );
 };
+
+
 
 export default SendMoneyPage;
