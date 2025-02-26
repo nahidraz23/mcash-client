@@ -1,25 +1,30 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import toast from "react-hot-toast";
+import { AuthContext } from "../provider/Auth";
+import { useQuery } from "@tanstack/react-query";
 
 const TransactionHistoryPage = () => {
+    const { user } = useContext(AuthContext)
+    console.log(user);
     const axiosSecure = useAxiosSecure();
-    const [transactions, setTransactions] = useState([]);
-
-    useEffect(() => {
-        const fetchTransactions = async () => {
-            try {
-                const res = await axiosSecure.get("/transaction/history");
-                setTransactions(res.data?.transactions);
-            } catch (err) {
-                toast.error(
-                    err.response?.data?.message || "Failed to fetch transactions"
-                );
+ 
+    const { data: transactions = [], isLoading, error, refetch } = useQuery({
+        queryKey: ['transactions', user?.role],
+        queryFn: async () => {
+            let res;
+            if (user?.role === 'admin') {
+                res = await axiosSecure.get('/admin/transactionhistory');
+            } else {
+                res = await axiosSecure.get('/transaction/history');
             }
-        };
-
-        fetchTransactions();
-    }, [axiosSecure]);
+            return res.data?.transactions;
+        },
+        enabled: !!axiosSecure && !!user,
+        onError: (err) => {
+            toast.error(err.response?.data?.message || 'Failed to fetch transactions');
+        }
+    });
 
     return (
         <div className="p-4">
@@ -41,7 +46,7 @@ const TransactionHistoryPage = () => {
                             <tr key={t.transactionId}>
                                 <td>{t.transactionId}</td>
                                 <td>{t.type}</td>
-                                <td>{t.amount}</td>
+                                <td>{t.amountInt}</td>
                                 <td>{t.fee}</td>
                                 <td>{new Date(t.date).toLocaleString()}</td>
                                 <td>{t.details}</td>

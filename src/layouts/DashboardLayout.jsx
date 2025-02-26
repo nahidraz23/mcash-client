@@ -38,6 +38,9 @@ const DashboardLayout = () => {
                         <Link to="/dashboard/cashin" className="w-full btn">
                             Cash In
                         </Link>
+                        <Link to="/dashboard/transactionhistory" className="w-full btn">
+                            Transaction History
+                        </Link>
                         <Link to="/dashboard/requestmoney" className="w-full btn">
                             Request Money
                         </Link>
@@ -54,6 +57,9 @@ const DashboardLayout = () => {
                         </Link>
                         <Link to="/dashboard/cashout" className="w-full btn">
                             Cash Out
+                        </Link>
+                        <Link to="/dashboard/transactionhistory" className="w-full btn">
+                            Transaction History
                         </Link>
                     </div>
                 }
