@@ -12,6 +12,7 @@ import AgentApprovalPage from "../pages/AgentApprovalPage";
 import AdminUserManagementPage from "../pages/AdminUserManagementPage";
 import TransactionHistoryPage from "../pages/TransactionHistoryPage";
 import BalanceInquiryPage from "../pages/BalanceInquiryPage";
+import AdminRechargeRequests from "../pages/AdminRechargeRequests";
 
 export const router = createBrowserRouter([
     {
@@ -61,6 +62,10 @@ export const router = createBrowserRouter([
                 element: <RequestMoneyPage />
             }, 
             {
+                path: '/dashboard/agentmoneyrequest',
+                element: <AdminRechargeRequests />
+            },
+            {
                 path: '/dashboard/agentrequest',
                 element: <AgentApprovalPage />
             }, 
@@ -76,7 +81,6 @@ export const router = createBrowserRouter([
                 path: '/dashboard/balanceinquiry',
                 element: <BalanceInquiryPage />
             }
-
         ]
     }
 ])

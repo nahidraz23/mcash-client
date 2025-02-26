@@ -9,7 +9,7 @@ const TransactionHistoryPage = () => {
     console.log(user);
     const axiosSecure = useAxiosSecure();
  
-    const { data: transactions = [], isLoading, error, refetch } = useQuery({
+    const { data: transactions = []} = useQuery({
         queryKey: ['transactions', user?.role],
         queryFn: async () => {
             let res;

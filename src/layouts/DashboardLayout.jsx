@@ -72,6 +72,9 @@ const DashboardLayout = () => {
                         <Link to="/dashboard/agentrequest" className="w-full btn">
                             Agent Request
                         </Link>
+                        <Link to="/dashboard/agentmoneyrequest" className="w-full btn">
+                            Agent Recharge Request
+                        </Link>
                         <Link to="/dashboard/manageusers" className="w-full btn">
                             Manage Users
                         </Link>

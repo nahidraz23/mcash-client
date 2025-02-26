@@ -36,17 +36,19 @@ const LoginPage = () => {
         {/* Background Image Section */}
         <div
           className="hidden bg-cover lg:block lg:w-2/3"
-          style={{
-            backgroundImage:
-              "url(https://images.unsplash.com/photo-1616763355603-9755a640a287?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80)",
-          }}
+
         >
-          <div className="flex items-center h-full px-20 bg-gray-900 bg-opacity-40">
+          <div className="flex items-center h-full px-20 bg-opacity-40" style={{
+            backgroundImage: "url('https://images.unsplash.com/photo-1620121692029-d088224ddc74?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover',
+          }
+          }>
             <div>
-              <h2 className="text-2xl font-bold text-white sm:text-3xl">Meraki UI</h2>
-              <p className="max-w-xl mt-3 text-gray-300">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. In autem ipsa,
-                nulla laboriosam dolores, repellendus perferendis libero suscipit nam temporibus molestiae.
+              <h2 className="text-2xl font-bold text-white sm:text-7xl">mCash</h2>
+              <p className="max-w-2xl mt-3 text-gray-300 text-xl">
+                Welcome Back!
+                Sign in to access your personalized dashboard and continue exploring our amazing features.
               </p>
             </div>
           </div>
