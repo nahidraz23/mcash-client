@@ -13,6 +13,7 @@ import AdminUserManagementPage from "../pages/AdminUserManagementPage";
 import TransactionHistoryPage from "../pages/TransactionHistoryPage";
 import BalanceInquiryPage from "../pages/BalanceInquiryPage";
 import AdminRechargeRequests from "../pages/AdminRechargeRequests";
+import PrivateRoutes from "./PrivateRoutes";
 
 export const router = createBrowserRouter([
     {
@@ -22,13 +23,13 @@ export const router = createBrowserRouter([
             {
                 path: '/',
                 element: <LoginPage />
-            }, 
+            },
             {
                 path: '/login',
                 element: <LoginPage />
-            }, 
+            },
             {
-                path: 'register', 
+                path: 'register',
                 element: <RegisterPage />
             },
         ]
@@ -39,47 +40,69 @@ export const router = createBrowserRouter([
         children: [
             {
                 path: '/dashboard',
-                element: <DashboardHome />
+                element: <PrivateRoutes>
+                    <DashboardHome />
+                </PrivateRoutes>
             },
             {
                 path: '/dashboard/overview',
-                element: <DashboardHome />
+                element: <PrivateRoutes>
+                    <DashboardHome />
+                </PrivateRoutes>
             },
             {
                 path: '/dashboard/sendmoney',
-                element: <SendMoneyPage />
+                element: <PrivateRoutes>
+                    <SendMoneyPage />
+                </PrivateRoutes>
             },
             {
                 path: '/dashboard/cashout',
-                element: <CashOutPage />
+                element: <PrivateRoutes>
+                    <CashOutPage />
+                </PrivateRoutes> 
             },
             {
                 path: '/dashboard/cashin',
-                element: <CashInPage />
+                element: <PrivateRoutes>
+                    <CashInPage />
+                </PrivateRoutes> 
             },
             {
                 path: '/dashboard/requestmoney',
-                element: <RequestMoneyPage />
-            }, 
+                element: <PrivateRoutes>
+                    <RequestMoneyPage />
+                </PrivateRoutes> 
+            },
             {
                 path: '/dashboard/agentmoneyrequest',
-                element: <AdminRechargeRequests />
+                element: <PrivateRoutes>
+                    <AdminRechargeRequests />
+                </PrivateRoutes> 
             },
             {
                 path: '/dashboard/agentrequest',
-                element: <AgentApprovalPage />
-            }, 
+                element: <PrivateRoutes>
+                    <AgentApprovalPage />
+                </PrivateRoutes> 
+            },
             {
                 path: '/dashboard/manageusers',
-                element: <AdminUserManagementPage />
+                element: <PrivateRoutes>
+                    <AdminUserManagementPage />
+                </PrivateRoutes> 
             },
             {
                 path: '/dashboard/transactionhistory',
-                element: <TransactionHistoryPage />
+                element: <PrivateRoutes>
+                    <TransactionHistoryPage />
+                </PrivateRoutes> 
             },
             {
                 path: '/dashboard/balanceinquiry',
-                element: <BalanceInquiryPage />
+                element: <PrivateRoutes>
+                    <BalanceInquiryPage />
+                </PrivateRoutes>
             }
         ]
     }

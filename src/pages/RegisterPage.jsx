@@ -65,8 +65,8 @@ const RegisterPage = () => {
             <div className="text-center">
               <div className="flex justify-center mx-auto">
                 <img
-                  className="w-auto h-7 sm:h-8"
-                  src="https://merakiui.com/images/logo.svg"
+                  className="w-auto h-7 sm:h-20"
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVjYwFZ3vdrMDHbBEfH4Tv9COX62M8-XEZrg&s"
                   alt="Logo"
                 />
               </div>
