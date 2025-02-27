@@ -44,6 +44,9 @@ const DashboardLayout = () => {
                             <Link to="/dashboard/requestmoney" className="w-full btn">
                                 Request Money
                             </Link>
+                            <Link to="/dashboard/balanceinquiry" className="w-full btn">
+                                Balance Inquiry
+                            </Link>
                         </div>
                     }{
                         user?.role === 'user'
@@ -61,14 +64,17 @@ const DashboardLayout = () => {
                             <Link to="/dashboard/transactionhistory" className="w-full btn">
                                 Transaction History
                             </Link>
+                            <Link to="/dashboard/balanceinquiry" className="w-full btn">
+                                Balance Inquiry
+                            </Link>
                         </div>
                     }
                     {
                         user?.role === 'admin' &&
                         <div className="flex flex-col gap-2">
-                            {/* <Link to="/dashboard/overview" className="w-full btn">
-                            Overview
-                        </Link> */}
+                            <Link to="/dashboard/overview" className="w-full btn">
+                                Overview
+                            </Link>
                             <Link to="/dashboard/agentrequest" className="w-full btn">
                                 Agent Request
                             </Link>

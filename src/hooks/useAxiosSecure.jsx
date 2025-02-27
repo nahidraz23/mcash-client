@@ -2,7 +2,7 @@ import axios from 'axios';
 import React from 'react';
 
 const axiosSecure = axios.create({
-    baseURL: 'http://localhost:5300',
+    baseURL: 'https://mcash-server.vercel.app',
     withCredentials: true,
 })
 
