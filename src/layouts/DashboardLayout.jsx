@@ -10,7 +10,7 @@ const DashboardLayout = () => {
 
     const handleLogOut = async () => {
         try {
-            const res = await axiosPublic.post('/api/auth/logout', {}, { withCredentials: true })
+            const res = await axiosPublic.post('/logout', {}, { withCredentials: true })
             if (res.data.message === 'Success') {
                 setUser(null)
                 navigate('/login')
