@@ -9,7 +9,7 @@ const CashInPage = () => {
 
     const onSubmit = async (data) => {
         try {
-            const response = await axiosSecure.post("/api/agent/cash-in", data);
+            const response = await axiosSecure.post("/transaction/cash-in", data);
             if (response.data?.message === "Cash-in successful") {
                 toast.success("Cash-in successful!");
                 reset();

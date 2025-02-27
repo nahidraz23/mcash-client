@@ -2,7 +2,7 @@ import axios from 'axios';
 import React from 'react';
 
 const axiosPublic = axios.create({
-    baseURL: 'https://mcash-server-v2.vercel.app'
+    baseURL: 'https://mcash-server.vercel.app'
 })
 
 const useAxiosPublic = () => {

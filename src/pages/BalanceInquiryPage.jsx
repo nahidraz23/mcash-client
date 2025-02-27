@@ -9,7 +9,7 @@ const BalanceInquiryPage = () => {
 
     const handleShowBalance = async () => {
         try {
-            const response = await axiosSecure.get("/api/user/balance");
+            const response = await axiosSecure.get("/balance");
             setBalance(response.data?.balance);
             setRevealed(true);
             toast.success("Balance revealed!");

@@ -13,9 +13,9 @@ const TransactionHistoryPage = () => {
         queryFn: async () => {
             let res;
             if (user?.role === 'admin') {
-                res = await axiosSecure.get('/api/admin/transactionhistory');
+                res = await axiosSecure.get('/admin/transactionhistory');
             } else {
-                res = await axiosSecure.get('/api/user/transaction/history');
+                res = await axiosSecure.get('/transaction/history');
             }
             return res.data?.transactions;
         },
