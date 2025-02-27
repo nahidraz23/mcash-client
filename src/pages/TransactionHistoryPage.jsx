@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import toast from "react-hot-toast";
 import { AuthContext } from "../provider/Auth";
@@ -6,10 +6,9 @@ import { useQuery } from "@tanstack/react-query";
 
 const TransactionHistoryPage = () => {
     const { user } = useContext(AuthContext)
-    console.log(user);
     const axiosSecure = useAxiosSecure();
- 
-    const { data: transactions = []} = useQuery({
+
+    const { data: transactions = [] } = useQuery({
         queryKey: ['transactions', user?.role],
         queryFn: async () => {
             let res;

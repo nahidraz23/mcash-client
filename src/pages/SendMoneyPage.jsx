@@ -10,7 +10,6 @@ const SendMoneyPage = () => {
     const onSubmit = async (data) => {
         try {
             const response = await axiosSecure.post("/transaction/send-money", data);
-            // console.log(response);
             if (response.data?.message === "Successful") {
                 toast.success("Money sent successfully!");
                 reset();

@@ -141,10 +141,10 @@ const RegisterPage = () => {
                         message: 'Pin should not be more than 5 digits'
                       }
                     })}
-                    type="number"
+                    type="password"
                     name="pin"
                     id="pin"
-                    placeholder="Please Enter Your Pin"
+                    placeholder="Please Enter Your 5 Digit Pin"
                     className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                   />
                   {errors.pin && (

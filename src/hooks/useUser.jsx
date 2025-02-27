@@ -1,12 +1,10 @@
 import React, { useContext } from 'react';
-import useAxiosPublic from './useAxiosPublic';
 import { useQuery } from '@tanstack/react-query';
 import useAxiosSecure from './useAxiosSecure';
 import { AuthContext } from '../provider/Auth';
 
 const useUser = (email) => {
-    const {setUser} = useContext(AuthContext);
-    // const axiosPublic = useAxiosPublic();
+    const { setUser } = useContext(AuthContext);
     const axiosSecure = useAxiosSecure();
 
     const { data: userInfo } = useQuery({

@@ -9,7 +9,6 @@ const RequestMoneyPage = () => {
 
   const onSubmit = async (data) => {
     try {
-      // Adjust the endpoint if needed
       const response = await axiosSecure.post("/agent/request-money", data);
       if (response.data?.message === "Request submitted") {
         toast.success("Recharge request submitted successfully!");
