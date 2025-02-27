@@ -9,7 +9,7 @@ const AdminUserManagementPage = () => {
 
     const fetchUsers = async () => {
         try {
-            const res = await axiosSecure.get("/admin/users");
+            const res = await axiosSecure.get("/api/admin/users");
             setUsers(res.data.users);
         } catch (err) {
             toast.error(err.response?.data?.message || "Failed to fetch users");

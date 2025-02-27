@@ -8,7 +8,7 @@ const AdminRechargeRequests = () => {
 
     const fetchRequests = async () => {
         try {
-            const response = await axiosSecure.get("/admin/recharge-requests");
+            const response = await axiosSecure.get("/api/recharge");
             setRequests(response.data.requests);
         } catch (error) {
             toast.error(
@@ -24,7 +24,7 @@ const AdminRechargeRequests = () => {
     const handleDecision = async (requestId, approve) => {
         try {
             const response = await axiosSecure.put(
-                `/admin/recharge-requests/${requestId}`,
+                `/api/recharge/recharge-requests/${requestId}`,
                 { approve }
             );
             toast.success(response.data.message);

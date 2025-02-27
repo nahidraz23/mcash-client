@@ -16,7 +16,7 @@ const LoginPage = () => {
     const credentials = { email, pin }
 
     try {
-      const response = await axiosSecure.post('/login', credentials)
+      const response = await axiosSecure.post('/api/auth/login', credentials)
       if (response.data?.message === 'Success') {
         toast.success('Login successful!')
         setUser(email)

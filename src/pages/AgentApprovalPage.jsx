@@ -8,7 +8,7 @@ const AgentApprovalPage = () => {
 
     const fetchAgents = async () => {
         try {
-            const res = await axiosSecure.get("/admin/agent-approvals");
+            const res = await axiosSecure.get("/api/admin/agent-approvals");
             setAgents(res.data.agents);
         } catch (err) {
             toast.error(
@@ -23,7 +23,7 @@ const AgentApprovalPage = () => {
 
     const handleApproval = async (email, approve) => {
         try {
-            await axiosSecure.put(`/admin/agent-approve/${email}`, { approve });
+            await axiosSecure.put(`/api/admin/agent-approve/${email}`, { approve });
             toast.success(
                 `Agent ${approve ? "approved" : "rejected"} successfully`
             );

@@ -9,7 +9,7 @@ const CashOutPage = () => {
 
     const onSubmit = async (data) => {
         try {
-            const response = await axiosSecure.post("/transaction/cash-out", data);
+            const response = await axiosSecure.post("/api/transaction/cash-out", data);
             if (response.data?.message === "Successful") {
                 toast.success("Cash-out successful!");
                 reset();
